@@ -33,7 +33,7 @@ public class ShapeCollector {
             Shape temporaryShape = iteratorShapesList.next();
             String temporaryName = temporaryShape.getShapeName();
             allShapes += temporaryName;
-            if(iteratorShapesList.hasNext())
+            if (iteratorShapesList.hasNext())
                 allShapes += ", ";
         }
         return allShapes;
