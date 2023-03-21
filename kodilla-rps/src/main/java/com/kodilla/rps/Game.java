@@ -65,7 +65,8 @@ public class Game {
                 String yesOrNo = playerMove.getYesOrNo();
 
                 if (yesOrNo.equals("y")) {
-                    return;
+                    computerPoints = 0;
+                    playerPoints = 0;
                 }
                 else if (yesOrNo.equals("n")) System.out.println("Continue then");
 
@@ -102,7 +103,7 @@ public class Game {
                 String yesOrNo = playerMove.getYesOrNo();
 
                 if (yesOrNo.equals("y")) continueLoop = false;
-            else if (yesOrNo.equals("n")) continueLoop = true;
+                else if (yesOrNo.equals("n")) continueLoop = true;
 
             } else if (newGameOrExit.equals("x")) {
                 System.out.println("Are you sure you want to quit?\n" +

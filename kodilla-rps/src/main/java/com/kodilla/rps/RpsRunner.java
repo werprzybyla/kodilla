@@ -12,5 +12,6 @@ public class RpsRunner {
             game.singleGame();
             game.nextGame();
         }
+
     }
 }

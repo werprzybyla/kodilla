@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class PlayerMove {
 
     Scanner playerAnswer = new Scanner(System.in);
-    String playerName = "";
-    int numberOfWins = 0;
-    String playerChoice = "";
-    String yesOrNo = "";
-    String newGameOrExit = "";
-    public void scanPlayerName() {
+    private String playerName = "";
+    private int numberOfWins = 0;
+    private String playerChoice = "";
+    private String yesOrNo = "";
+    private String newGameOrExit = "";
 
+    public void scanPlayerName() {
         playerName = playerAnswer.nextLine();
     }
 
@@ -21,7 +21,6 @@ public class PlayerMove {
 
     public void scanPlayerChoice() {
         playerChoice = playerAnswer.nextLine();
-
     }
 
     public void scanYesOrNo() {
