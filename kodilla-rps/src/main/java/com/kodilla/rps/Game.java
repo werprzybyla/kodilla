@@ -2,8 +2,8 @@ package com.kodilla.rps;
 
 
 public class Game {
-    PlayerMove playerMove = new PlayerMove();
-    ComputerMove computerMove = new ComputerMove();
+    private PlayerMove playerMove = new PlayerMove();
+    private ComputerMove computerMove = new ComputerMove();
 
     public void introduction() {
         System.out.println("Welcome in Rock-Paper-Scissors Game! Enter your name:");
