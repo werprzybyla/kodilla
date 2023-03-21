@@ -61,28 +61,48 @@ public class Game {
                 System.out.println("Are you sure you want to start a new game?\n" +
                         "y - yes\n" +
                         "n - no");
-                playerMove.scanYesOrNo();
-                String yesOrNo = playerMove.getYesOrNo();
+                boolean continueLoop = true;
 
-                if (yesOrNo.equals("y")) {
-                    computerPoints = 0;
-                    playerPoints = 0;
+                while (continueLoop) {
+                    playerMove.scanYesOrNo();
+                    String yesOrNo = playerMove.getYesOrNo();
+                    if (yesOrNo.equals("y")) {
+                        computerPoints = 0;
+                        playerPoints = 0;
+                        continueLoop = false;
+                    } else if (yesOrNo.equals("n")) {
+                        System.out.println("Continue then");
+                        continueLoop = false;
+                    } else {
+                        System.out.println("Please enter correct value");
+                        continueLoop = true;
+                    }
                 }
-                else if (yesOrNo.equals("n")) System.out.println("Continue then");
 
-            } else if (player.equals("exit"))  {
+            } else if (player.equals("exit")) {
                 System.out.println("Are you sure you want to quit?\n" +
                         "y - yes\n" +
                         "n - no");
-                playerMove.scanYesOrNo();
-                String yesOrNo = playerMove.getYesOrNo();
+                boolean continueLoop = true;
 
-                if (yesOrNo.equals("n")) System.out.println("Continue then");
-                else System.exit(0);
-            }
+                while (continueLoop) {
+                    playerMove.scanYesOrNo();
+                    String yesOrNo = playerMove.getYesOrNo();
+
+                    if (yesOrNo.equals("n")) {
+                        System.out.println("Continue then");
+                        continueLoop = false;
+                    } else if (yesOrNo.equals("y")) System.exit(0);
+                    else {
+                        System.out.println("Please enter correct value");
+                        continueLoop = true;
+                    }
+                }
+            } else System.out.println("Please enter correct value");
         }
+
         if (playerPoints == numberOfWins) System.out.println("You won! Congratulations!\n");
-        else if (computerPoints == numberOfWins) System.out.println("Computer won!\n");
+        else System.out.println("Computer won!\n");
     }
 
     public void nextGame() {
@@ -99,21 +119,52 @@ public class Game {
                 System.out.println("Are you sure you want to start a new game?\n" +
                         "y - yes\n" +
                         "n - no");
-                playerMove.scanYesOrNo();
-                String yesOrNo = playerMove.getYesOrNo();
+                boolean continueLittleLoop = true;
 
-                if (yesOrNo.equals("y")) continueLoop = false;
-                else if (yesOrNo.equals("n")) continueLoop = true;
+                while(continueLittleLoop) {
+                    playerMove.scanYesOrNo();
+                    String yesOrNo = playerMove.getYesOrNo();
+
+                    if (yesOrNo.equals("y")) {
+                        continueLoop = false;
+                        continueLittleLoop = false;
+                    }
+                    else if (yesOrNo.equals("n")) {
+                        continueLoop = true;
+                        continueLittleLoop = false;
+                    }
+                    else {
+                        System.out.println("Please enter correct value");
+                        continueLoop = true;
+                        continueLittleLoop = true;
+                    }
+                }
 
             } else if (newGameOrExit.equals("x")) {
                 System.out.println("Are you sure you want to quit?\n" +
                         "y - yes\n" +
                         "n - no");
-                playerMove.scanYesOrNo();
-                String yesOrNo = playerMove.getYesOrNo();
 
-                if (yesOrNo.equals("n")) continueLoop = true;
-                else System.exit(0);
+                boolean continueLittleLoop = true;
+
+                while(continueLittleLoop) {
+                    playerMove.scanYesOrNo();
+                    String yesOrNo = playerMove.getYesOrNo();
+
+                    if (yesOrNo.equals("n")) {
+                        continueLoop = true;
+                        continueLittleLoop = false;
+                    }
+                    else if (yesOrNo.equals("y")) System.exit(0);
+                    else {
+                        System.out.println("Please enter correct value");
+                        continueLoop = true;
+                        continueLittleLoop = true;
+                    }
+                }
+            } else {
+                System.out.println("Please enter correct value");
+                continueLoop = true;
             }
         }
     }

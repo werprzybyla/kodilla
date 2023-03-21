@@ -3,7 +3,7 @@ package com.kodilla.rps;
 import java.util.Random;
 
 public class ComputerMove {
-    Random computerMoveGenerator = new Random();
+    private Random computerMoveGenerator = new Random();
 
     public String findComputerMove() {
         int result = computerMoveGenerator.nextInt(3);

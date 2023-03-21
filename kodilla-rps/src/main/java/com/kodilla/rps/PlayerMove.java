@@ -4,9 +4,9 @@ import java.util.Scanner;
 
 public class PlayerMove {
 
-    Scanner playerAnswer = new Scanner(System.in);
+    private Scanner playerAnswer = new Scanner(System.in);
     private String playerName = "";
-    private int numberOfWins = 0;
+    private int numberOfWins;
     private String playerChoice = "";
     private String yesOrNo = "";
     private String newGameOrExit = "";
@@ -16,7 +16,18 @@ public class PlayerMove {
     }
 
     public void scanNumberOfWins() {
-        numberOfWins = Integer.parseInt(playerAnswer.nextLine());
+
+        boolean continueLoop = true;
+
+        while(continueLoop) {
+            try {
+                numberOfWins = Integer.parseInt(playerAnswer.nextLine());
+                continueLoop = false;
+            } catch (NumberFormatException a) {
+                System.out.print("Please enter a number\n");
+                continueLoop = true;
+            }
+        }
     }
 
     public void scanPlayerChoice() {
