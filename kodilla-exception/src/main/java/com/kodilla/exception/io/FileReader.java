@@ -10,24 +10,33 @@ import java.util.stream.Stream;
 
 public class FileReader {
 
-    public void readFile() {
+    public void readFile() throws FileReaderException{
         ClassLoader classLoader = getClass().getClassLoader();
-        //File file = new File(classLoader.getResource("names.txt").getFile());
 
         try {
-            Path path = Path.of(classLoader.getResource("names.txt").toURI());
-            //System.out.println(path);
-            Stream<String> fileLines = Files.lines(path);
+            File file = new File(classLoader.getResource("names.txt").toURI());
+            Stream<String> fileLines = Files.lines(Paths.get(file.getPath()));
             fileLines.forEach(System.out::println);
         } catch (IOException e) {
-            System.out.println("Błąd odczytu pliku");
-            //e.printStackTrace();
+            throw new FileReaderException();
         } catch (URISyntaxException e) {
             throw new RuntimeException(e);
         } finally {
             System.out.println("A am gonna be here... always!");
         }
+    }
 
-        //System.out.println(file.getPath());
+    public void readFile(final String fileName) throws FileReaderException{
+        ClassLoader classLoader = getClass().getClassLoader();
+
+        try (Stream<String> fileLines = Files.lines(Path.of(classLoader.getResource(fileName).toURI()));){
+            fileLines.forEach(System.out::println);
+        } catch (Exception e) {
+            throw new FileReaderException();
+//        } catch (URISyntaxException e) {
+//            throw new RuntimeException(e);
+        } finally {
+            System.out.println("A am gonna be here... always!");
+        }
     }
 }
